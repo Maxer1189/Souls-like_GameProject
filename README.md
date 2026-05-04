@@ -5,3 +5,5 @@ A third‑person action RPG inspired by Souls‑like combat, built in Unreal Eng
 
 Source folder includes Public folder which has header files and Private folder which has cpp files.
 Blueprints folder includes screenshots of some of my blueprints.
+
+Not all files have been uploaded.
