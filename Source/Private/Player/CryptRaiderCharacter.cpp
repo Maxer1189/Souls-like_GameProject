@@ -87,8 +87,6 @@ void ACryptRaiderCharacter::BeginPlay()
 	HUD = Cast<ACryptRaiderHUD>(GetWorld()->GetFirstPlayerController()->GetHUD());
 	
 	SetupPlayerInputMapping();
-	// CharacterAbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(UCharacterAttributeSet::GetCurrentStaminaAttribute()).AddUObject(this, &ThisClass::OnStaminaChanged);
-
 	
 	Tags.Add(FName("PlayerCharacter"));
 }
@@ -131,7 +129,6 @@ void ACryptRaiderCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 		EnhancedInputComponent->BindNativeInputAction(InputConfigDataAsset, CryptRaiderGameplayTags::InputTag_Move, ETriggerEvent::Triggered,this, &ThisClass::Move);
 		EnhancedInputComponent->BindNativeInputAction(InputConfigDataAsset, CryptRaiderGameplayTags::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Look);
 		EnhancedInputComponent->BindNativeInputAction(InputConfigDataAsset, CryptRaiderGameplayTags::InputTag_ToggleMenu, ETriggerEvent::Triggered, this, &ThisClass::ToggleMenu);
-		// EnhancedInputComponent->BindNativeInputAction(InputConfigDataAsset, CryptRaiderGameplayTags::InputTag_Heal, ETriggerEvent::Triggered, this, &ThisClass::Heal);
 		EnhancedInputComponent->BindNativeInputAction(InputConfigDataAsset, CryptRaiderGameplayTags::InputTag_Equip_Weapon_Light, ETriggerEvent::Triggered, this, &ThisClass::ToggleLightWeaponPressedState);
 		EnhancedInputComponent->BindNativeInputAction(InputConfigDataAsset, CryptRaiderGameplayTags::InputTag_Equip_Weapon_Heavy, ETriggerEvent::Triggered, this, &ThisClass::ToggleHeavyWeaponPressedState);
 		EnhancedInputComponent->BindNativeInputAction(InputConfigDataAsset, CryptRaiderGameplayTags::InputTag_SwitchTarget, ETriggerEvent::Triggered, this, &ThisClass::SwitchTargetTriggered);
@@ -338,8 +335,6 @@ void ACryptRaiderCharacter::PerformInteractionCheck()
 
 		if(LookDirection > 0)
 		{
-			// DrawDebugLine(GetWorld(), TraceStart, TraceEnd, FColor::Red, false, 1.0f, 0, 2.0f);
-			
 			FCollisionQueryParams PlayerCollisionParams;
 			PlayerCollisionParams.AddIgnoredActor(this);
 			FHitResult HitResult;
@@ -421,7 +416,7 @@ void ACryptRaiderCharacter::NoInteractableFound()
 void ACryptRaiderCharacter::BeginInteract()
 {
 	// verify nothing has changed with the interactable state since beginning interaction
-	// PerformInteractionCheck();
+	PerformInteractionCheck();
 
 	if (InteractionData.CurrentInteractable)
 	{
@@ -430,7 +425,6 @@ void ACryptRaiderCharacter::BeginInteract()
 			TargetInteractable->BeginInteract();
 
 			// If there's a valid delay above the error tolerance then we set the timer, the timer runs then interacts
-
 			if(FMath::IsNearlyZero(TargetInteractable->InteractableData.InteractionDelayDuration, 0.1f)) // error tolerance is maximum allowed difference to zero
 			{
 				Interact();
@@ -488,7 +482,6 @@ void ACryptRaiderCharacter::ShowInventoryInfoMessage(const FText& MessageToDispl
 
 void ACryptRaiderCharacter::ToggleMenu()
 {
-	// if (!Attributes->IsAlive()) return;
 	if(HUD) HUD->ToggleMenu();
 }
 
