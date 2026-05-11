@@ -12,7 +12,7 @@ Gameplay Showcase
 - Enemy AI (melee, ranged, boss)
 - Dungeon exploration
 
-Full gameplay video: [YouTube Link]
+Full gameplay video: https://youtu.be/b0vLqkX_gp4
 
 Source folder includes Public folder which has header files and Private folder which has cpp files.
 Blueprints folder includes screenshots of some of my blueprints.
