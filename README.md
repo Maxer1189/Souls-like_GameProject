@@ -9,7 +9,8 @@ A third‑person action RPG inspired by Souls‑like combat, built in Unreal Eng
 - Enemy AI (melee, ranged, boss)
 - Dungeon exploration
 
-Full gameplay video: https://youtu.be/b0vLqkX_gp4
+Full gameplay video: 
+I’ll add it soon!
 
 Source folder includes Public folder which has header files and Private folder which has cpp files.
 Blueprints folder includes screenshots of some of my blueprints.
